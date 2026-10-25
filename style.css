@@ -1,0 +1,45 @@
+/* Mengatur ukuran wadah kartu */
+.card-container {
+    width: 300px;
+    height: 400px;
+    perspective: 1000px; /* Memberikan efek kedalaman 3D */
+    cursor: pointer;
+    margin: 50px auto;
+}
+
+/* Wadah internal untuk menampung kedua sisi */
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease; /* Kecepatan animasi berputar */
+}
+
+/* Class ini akan ditambahkan oleh JavaScript saat kartu ditekan */
+.card-inner.is-flipped {
+    transform: rotateY(180deg);
+}
+
+/* Mengatur posisi kedua sisi agar menumpuk rapi */
+.card-front, .card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden; /* Menyembunyikan sisi belakang saat tidak menghadap layar */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Mengatur ukuran gambar agar pas di dalam kartu */
+.card-front img, .card-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Memutar sisi belakang sejak awal sebesar 180 derajat */
+.card-back {
+    transform: rotateY(180deg);
+}
